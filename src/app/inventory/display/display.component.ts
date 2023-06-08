@@ -34,13 +34,21 @@ export class DisplayInventoryComponent {
 
       // Update the local storage with the updated products array
       localStorage.setItem('products', JSON.stringify(this.products));
+      console.log('Product data deleted successfully!');
+    alert("Item deleted successfully");
     }
   }
 
   editProduct(product: Product) {
-    // Set the currently edited product
-    this.editedProduct = product;
+    // Find the index of the product in the array
+    const index = this.products.findIndex(p => p.id === product.id);
+  
+    if (index !== -1) {
+      // Assign the corresponding product from the array to the editedProduct
+      this.editedProduct = this.products[index];
+    }
   }
+  
 
   updateProduct() {
     if (this.editedProduct) {
@@ -56,6 +64,8 @@ export class DisplayInventoryComponent {
 
         // Update the local storage with the updated products array
         localStorage.setItem('products', JSON.stringify(this.products));
+        console.log('Product data updated successfully!');
+        alert("Item updated successfully");
       }
     }
   }

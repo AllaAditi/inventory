@@ -39,7 +39,7 @@ export class CreateInventoryComponent {
     localStorage.setItem('products', JSON.stringify(existingProducts));
 
     console.log('Product data saved successfully!');
-    alert("Button Clicked");
+    alert("saved");
 
     // Reset the form
     this.product = {

@@ -2,6 +2,7 @@
     display: flex;
     justify-content: space-between;
     background-color: #9775cb;
+    
     padding: 10px;
   }
   
@@ -11,4 +12,7 @@
     padding: 10px;
   }
   
+  .navbar-item.active{
+    background-color: white;
+  }
   

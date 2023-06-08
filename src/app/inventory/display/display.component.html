@@ -1,24 +1,44 @@
-<table class="product-table">
+<table>
   <thead>
     <tr>
-      
-      <th>Name</th>
-      <th>Quantity</th>
-      <th>Price</th>
-      <th>Action</th>
+      <th scope="col">Name</th>
+      <th scope="col">Quantity</th>
+      <th scope="col">Price</th>
+      <th scope="col">Action</th>
     </tr>
   </thead>
   <tbody>
     <tr *ngFor="let product of products">
-      <td>{{ product.name }}</td>
-      <td>{{ product.quantity }}</td>
-      <td>{{ product.price }}</td>
+      <td>
+        <ng-container *ngIf="editedProduct?.id === product.id; else productName">
+          <input [(ngModel)]="product.name" placeholder="Name" />
+          <div *ngIf="!product.name">Please enter the name.</div>
+        </ng-container>
+        <ng-template #productName>
+          {{ product.name }}
+        </ng-template>
+      </td>
+      <td>
+        <ng-container *ngIf="editedProduct?.id === product.id; else productQuantity">
+          <input [(ngModel)]="product.quantity" placeholder="Quantity" />
+          <div *ngIf="!product.quantity">Please enter the quantity.</div>
+        </ng-container>
+        <ng-template #productQuantity>
+          {{ product.quantity }}
+        </ng-template>
+      </td>
+      <td>
+        <ng-container *ngIf="editedProduct?.id === product.id; else productPrice">
+          <input [(ngModel)]="product.price" placeholder="Price" />
+          <div *ngIf="!product.price">Please enter the price.</div>
+        </ng-container>
+        <ng-template #productPrice>
+          {{ product.price }}
+        </ng-template>
+      </td>
       <td>
         <ng-container *ngIf="editedProduct?.id === product.id; else editButtons">
-          <input [(ngModel)]="editedProduct.name" placeholder="Name" />
-          <input [(ngModel)]="editedProduct.quantity" placeholder="Quantity" />
-          <input [(ngModel)]="editedProduct.price" placeholder="Price" />
-          <button (click)="updateProduct()">Submit</button>
+          <button (click)="updateProduct()">Update</button>
           <button (click)="cancelEdit()">Cancel</button>
         </ng-container>
         <ng-template #editButtons>

@@ -5,7 +5,7 @@ import { CreateInventoryComponent } from '../app/inventory/create-inventory/crea
 
 
 const routes: Routes = [
-  { path: 'create', pathMatch: 'full', component: CreateInventoryComponent },
+  { path: '', pathMatch: 'full', component: CreateInventoryComponent },
   { path: 'display', pathMatch: 'full', component: DisplayInventoryComponent}
 ];
 
