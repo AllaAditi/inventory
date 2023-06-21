@@ -1,16 +1,16 @@
 <form (ngSubmit)="submitForm()">
-
-    <div>
-      <label for="name">Name:</label>
-      <input type="text" id="name" name="name" [(ngModel)]="product.name" required>
-    </div>
-    <div>
-      <label for="quantity">Quantity:</label>
-      <input type="number" id="quantity" name="quantity" [(ngModel)]="product.quantity" required>
-    </div>
-    <div>
-      <label for="price">Price:</label>
-      <input type="number" id="price" name="price" [(ngModel)]="product.price" required>
-    </div>
-    <button type="submit" >Submit</button>
-  </form>
+  <div>
+    <label for="name">Name:</label>
+    <input type="text" id="name" name="name" [(ngModel)]="product.name" required>
+  </div>
+  <div>
+    <label for="quantity">Quantity:</label>
+    <input type="number" id="quantity" name="quantity" [(ngModel)]="product.quantity" required>
+  </div>
+  <div>
+    <label for="price">Price:</label>
+    <input type="number" id="price" name="price" [(ngModel)]="product.price" required>
+  </div>
+  <div *ngIf="nameError" class="error-message">{{ nameError }}</div>
+  <button type="submit">Submit</button>
+</form>

@@ -6,7 +6,8 @@ import { CreateInventoryComponent } from '../app/inventory/create-inventory/crea
 
 const routes: Routes = [
   { path: '', pathMatch: 'full', component: CreateInventoryComponent },
-  { path: 'display', pathMatch: 'full', component: DisplayInventoryComponent}
+  { path: 'display', pathMatch: 'full', component: DisplayInventoryComponent},
+  { path: 'create', pathMatch: 'full', component: CreateInventoryComponent },
 ];
 
 @NgModule({

@@ -11,8 +11,8 @@
     <tr *ngFor="let product of products">
       <td>
         <ng-container *ngIf="editedProduct?.id === product.id; else productName">
-          <input [(ngModel)]="product.name" placeholder="Name" />
-          <div *ngIf="!product.name">Please enter the name.</div>
+          <input [(ngModel)]="editedProduct.name" placeholder="Name" required>
+          <div class="error-message" *ngIf="isProductFormSubmitted && !editedProduct.name">Name is required.</div>
         </ng-container>
         <ng-template #productName>
           {{ product.name }}
@@ -20,8 +20,8 @@
       </td>
       <td>
         <ng-container *ngIf="editedProduct?.id === product.id; else productQuantity">
-          <input [(ngModel)]="product.quantity" placeholder="Quantity" />
-          <div *ngIf="!product.quantity">Please enter the quantity.</div>
+          <input [(ngModel)]="editedProduct.quantity" placeholder="Quantity" required>
+          <div class="error-message" *ngIf="isProductFormSubmitted && !editedProduct.quantity">Quantity is required.</div>
         </ng-container>
         <ng-template #productQuantity>
           {{ product.quantity }}
@@ -29,8 +29,8 @@
       </td>
       <td>
         <ng-container *ngIf="editedProduct?.id === product.id; else productPrice">
-          <input [(ngModel)]="product.price" placeholder="Price" />
-          <div *ngIf="!product.price">Please enter the price.</div>
+          <input [(ngModel)]="editedProduct.price" placeholder="Price" required>
+          <div class="error-message" *ngIf="isProductFormSubmitted && !editedProduct.price">Price is required.</div>
         </ng-container>
         <ng-template #productPrice>
           {{ product.price }}

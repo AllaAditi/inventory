@@ -19,10 +19,16 @@ export class CreateInventoryComponent {
     quantity: 0,
     price: 0
   };
+  nameError: string = '';
 
   constructor() { }
 
   submitForm() {
+    if (!this.isFormValid()) {
+      this.nameError = 'All fields are required';
+      return;
+    }
+
     // Generate a system-generated ID
     const generatedId = this.generateId();
 
@@ -39,7 +45,7 @@ export class CreateInventoryComponent {
     localStorage.setItem('products', JSON.stringify(existingProducts));
 
     console.log('Product data saved successfully!');
-    alert("saved");
+    alert('Product saved successfully!');
 
     // Reset the form
     this.product = {
@@ -48,6 +54,7 @@ export class CreateInventoryComponent {
       quantity: 0,
       price: 0
     };
+    this.nameError = '';
   }
 
   generateId(): string {
@@ -59,5 +66,9 @@ export class CreateInventoryComponent {
       id += characters.charAt(Math.floor(Math.random() * characters.length));
     }
     return id;
+  }
+
+  isFormValid(): boolean {
+    return !!this.product.name && !!this.product.quantity && !!this.product.price;
   }
 }
