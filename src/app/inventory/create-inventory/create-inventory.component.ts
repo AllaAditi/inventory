@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ToastrService } from 'ngx-toastr';
 
 interface Product {
   id: string;
@@ -21,13 +22,18 @@ export class CreateInventoryComponent {
   };
   nameError: string = '';
 
-  constructor() { }
+  constructor(private toastr: ToastrService) { }
+
+  isFormValid(): boolean {
+    return !!this.product.name && !!this.product.quantity && !!this.product.price;
+  }
 
   submitForm() {
     if (!this.isFormValid()) {
       this.nameError = 'All fields are required';
       return;
     }
+    
 
     // Generate a system-generated ID
     const generatedId = this.generateId();
@@ -45,7 +51,8 @@ export class CreateInventoryComponent {
     localStorage.setItem('products', JSON.stringify(existingProducts));
 
     console.log('Product data saved successfully!');
-    alert('Product saved successfully!');
+    this.toastr.success('Product updated successfully!');
+    
 
     // Reset the form
     this.product = {
@@ -68,7 +75,4 @@ export class CreateInventoryComponent {
     return id;
   }
 
-  isFormValid(): boolean {
-    return !!this.product.name && !!this.product.quantity && !!this.product.price;
-  }
 }

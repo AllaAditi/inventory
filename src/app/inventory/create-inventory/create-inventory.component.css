@@ -3,16 +3,19 @@ form {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  margin-top: 50px;
-  padding-top: 30px;
-  border: 1px solid black;
+  height: 696px;
+  border: 1px solid #000000;
   border-radius: 4px;
-  background-color: #f2f2f2;
-  display: flexbox;
+  background-image: url('C:\Users\aditi.alla\Downloads\bg.jfif');
+  background-repeat:no-repeat;
+  background-size: 100% 100%;
+
+  
   
 }
 
 div {
+ 
   margin-bottom: 20px;
 }
 
@@ -31,7 +34,7 @@ input[type="number"] {
 
 button[type="submit"] {
   padding: 10px 20px;
-  background-color: plum;
+  background-color: rgb(41, 49, 41);
   color: #fff;
   border: none;
   border-radius: 4px;
@@ -41,4 +44,11 @@ button[type="submit"] {
 
 button[type="submit"]:hover {
   background-color: #bad7ae;
+}
+input[type="text"],
+input[type="number"] {
+  padding: 10px;
+  border: 1px solid #171313;
+  border-radius: 4px;
+  width: 100%;
 }

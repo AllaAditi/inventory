@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ToastrService } from 'ngx-toastr';
 
 interface Product {
   id: string;
@@ -17,20 +18,26 @@ export class DisplayInventoryComponent {
   editedProduct: Product = { id: '', name: '', quantity: 0, price: 0 };
   isProductFormSubmitted: boolean = false;
 
-  constructor() {
+  constructor(public toastr: ToastrService) {
     const storedProducts = JSON.parse(localStorage.getItem('products') || '[]');
     this.products = storedProducts;
   }
 
-  deleteProduct(product: Product) {
-    const index = this.products.indexOf(product);
-
+  product: any
+  callDeleteProductModal(product: any) {
+    this.product = product
+  }
+  
+  deleteProduct() {
+    const index = this.products.indexOf(this.product);
     if (index !== -1) {
       this.products.splice(index, 1);
       localStorage.setItem('products', JSON.stringify(this.products));
-      console.log('Product data deleted successfully!');
+      this.toastr.success('Product deleted successfully!');
+      
     }
   }
+  
 
   editProduct(product: Product) {
     this.editedProduct = { ...product };
@@ -38,10 +45,10 @@ export class DisplayInventoryComponent {
 
   updateProduct() {
     this.isProductFormSubmitted = true;
-  
+
     if (this.isValidProduct(this.editedProduct)) {
       const index = this.products.findIndex(p => p.id === this.editedProduct.id);
-  
+
       if (index !== -1) {
         this.products[index] = { ...this.editedProduct };
         localStorage.setItem('products', JSON.stringify(this.products));
@@ -51,7 +58,7 @@ export class DisplayInventoryComponent {
       }
     }
   }
-  
+
 
   cancelEdit() {
     this.editedProduct = { id: '', name: '', quantity: 0, price: 0 };

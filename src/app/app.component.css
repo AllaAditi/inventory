@@ -1,14 +1,14 @@
 .navbar {
     display: flex;
     justify-content: space-between;
-    background-color: #9775cb;
+    background-color: rgb(24, 24, 116);
     
     padding: 10px;
   }
   
   .navbar-item {
     text-decoration: none;
-    color: #333;
+    color: wheat;
     padding: 10px;
   }
   
